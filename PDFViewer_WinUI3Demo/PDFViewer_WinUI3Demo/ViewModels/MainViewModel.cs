@@ -25,10 +25,16 @@ namespace PDFViewer_WinUI3Demo.ViewModels
         ToolManager mToolManager;
         bool mIsVerticalScrolling = true;
 
-        public PdfTabInfo(PDFDoc doc)
+        public PdfTabInfo(PDFDoc doc, StorageFile file)
         {
             mPDFViewCtrl = new PDFViewCtrl();
             mToolManager = new ToolManager(PDFView);
+
+            if (file != null)
+            {
+                OriginalFile = file;
+                Name = file.DisplayName;
+            }
 
             PDFView.SetBackgroundColor(Windows.UI.Color.FromArgb(255, 241, 243, 245));
             PDFView.SetDoc(doc);
@@ -53,6 +59,8 @@ namespace PDFViewer_WinUI3Demo.ViewModels
             get { return mToolManager; }
             set { mToolManager = value; }
         }
+
+        public StorageFile OriginalFile { get; set; }
 
         public string Name { get; set;} = "untitled";
 
@@ -116,14 +124,30 @@ namespace PDFViewer_WinUI3Demo.ViewModels
 
             var doc = PDFView.GetDoc();
 
+            bool isLocked = false;
             try
             {
-                await doc.SaveAsync();
+                doc.LockRead();
+                isLocked = true;
+
+                if (doc.IsModified())
+                {
+                    doc.UnlockRead();
+                    isLocked = false;
+
+                    await doc.SaveAsync(pdftron.SDF.SDFDocSaveOptions.e_incremental);
+                }
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
             }
+            finally
+            {
+                if (isLocked)
+                    doc.UnlockRead();
+            }
+
         }
 
         public async Task SaveDocAsAsync()
@@ -210,12 +234,12 @@ namespace PDFViewer_WinUI3Demo.ViewModels
         {
             if (string.IsNullOrEmpty(pdfFile))
                 return;
-
+            
             PDFDoc doc;
             try 
             {
                 doc = PDFDoc.CreateFromFilePath(pdfFile);
-                var pdfTabInfo = new PdfTabInfo(doc);
+                var pdfTabInfo = new PdfTabInfo(doc, null);
 
                 PdfTabs.Add(pdfTabInfo);
             }
@@ -318,12 +342,10 @@ namespace PDFViewer_WinUI3Demo.ViewModels
             if (file == null)
                 return;
 
-            var pdfDoc = await UtilityWinRT.OpenFilePDFViewerAsync(file, FileAccessMode.ReadWrite);
+            var pdfDoc = await UtilityWinRT.OpenFilePDFViewerAsync(file, FileAccessMode.Read);
             if (pdfDoc == null)
                 return;
-
-            var pdfTabInfo = new PdfTabInfo(pdfDoc);
-            pdfTabInfo.Name = file.DisplayName;
+            var pdfTabInfo = new PdfTabInfo(pdfDoc, file);
 
             PdfTabs.Add(pdfTabInfo);
         }
