@@ -1,0 +1,71 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31515.178
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{C7167F0D-BC9F-4E6E-AFE1-012C56B48DB5}") = "PDFViewer_WinUI3Demo (Package)", "PDFViewer_WinUI3Demo (Package)\PDFViewer_WinUI3Demo (Package).wapproj", "{3005B097-7C1C-476F-AAD7-B64BC7B17E13}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PDFViewer_WinUI3Demo", "PDFViewer_WinUI3Demo\PDFViewer_WinUI3Demo.csproj", "{577E02CF-8C8F-4F28-9ED8-31FA3ACE2C5B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PDFViewer_WinUI3Demo.Core", "PDFViewer_WinUI3Demo.Core\PDFViewer_WinUI3Demo.Core.csproj", "{E0D90619-6D27-482B-86B1-496F4AD78D3B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+		RelWithDebInfo|x64 = RelWithDebInfo|x64
+		RelWithDebInfo|x86 = RelWithDebInfo|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3005B097-7C1C-476F-AAD7-B64BC7B17E13}.Debug|x64.ActiveCfg = Debug|x64
+		{3005B097-7C1C-476F-AAD7-B64BC7B17E13}.Debug|x64.Build.0 = Debug|x64
+		{3005B097-7C1C-476F-AAD7-B64BC7B17E13}.Debug|x64.Deploy.0 = Debug|x64
+		{3005B097-7C1C-476F-AAD7-B64BC7B17E13}.Debug|x86.ActiveCfg = Debug|x86
+		{3005B097-7C1C-476F-AAD7-B64BC7B17E13}.Debug|x86.Build.0 = Debug|x86
+		{3005B097-7C1C-476F-AAD7-B64BC7B17E13}.Debug|x86.Deploy.0 = Debug|x86
+		{3005B097-7C1C-476F-AAD7-B64BC7B17E13}.Release|x64.ActiveCfg = Release|x64
+		{3005B097-7C1C-476F-AAD7-B64BC7B17E13}.Release|x64.Build.0 = Release|x64
+		{3005B097-7C1C-476F-AAD7-B64BC7B17E13}.Release|x64.Deploy.0 = Release|x64
+		{3005B097-7C1C-476F-AAD7-B64BC7B17E13}.Release|x86.ActiveCfg = Release|x86
+		{3005B097-7C1C-476F-AAD7-B64BC7B17E13}.Release|x86.Build.0 = Release|x86
+		{3005B097-7C1C-476F-AAD7-B64BC7B17E13}.Release|x86.Deploy.0 = Release|x86
+		{3005B097-7C1C-476F-AAD7-B64BC7B17E13}.RelWithDebInfo|x64.ActiveCfg = Release|x64
+		{3005B097-7C1C-476F-AAD7-B64BC7B17E13}.RelWithDebInfo|x64.Build.0 = Release|x64
+		{3005B097-7C1C-476F-AAD7-B64BC7B17E13}.RelWithDebInfo|x64.Deploy.0 = Release|x64
+		{3005B097-7C1C-476F-AAD7-B64BC7B17E13}.RelWithDebInfo|x86.ActiveCfg = Release|x86
+		{3005B097-7C1C-476F-AAD7-B64BC7B17E13}.RelWithDebInfo|x86.Build.0 = Release|x86
+		{3005B097-7C1C-476F-AAD7-B64BC7B17E13}.RelWithDebInfo|x86.Deploy.0 = Release|x86
+		{577E02CF-8C8F-4F28-9ED8-31FA3ACE2C5B}.Debug|x64.ActiveCfg = Debug|x64
+		{577E02CF-8C8F-4F28-9ED8-31FA3ACE2C5B}.Debug|x64.Build.0 = Debug|x64
+		{577E02CF-8C8F-4F28-9ED8-31FA3ACE2C5B}.Debug|x86.ActiveCfg = Debug|x86
+		{577E02CF-8C8F-4F28-9ED8-31FA3ACE2C5B}.Debug|x86.Build.0 = Debug|x86
+		{577E02CF-8C8F-4F28-9ED8-31FA3ACE2C5B}.Release|x64.ActiveCfg = Release|x64
+		{577E02CF-8C8F-4F28-9ED8-31FA3ACE2C5B}.Release|x64.Build.0 = Release|x64
+		{577E02CF-8C8F-4F28-9ED8-31FA3ACE2C5B}.Release|x86.ActiveCfg = Release|x86
+		{577E02CF-8C8F-4F28-9ED8-31FA3ACE2C5B}.Release|x86.Build.0 = Release|x86
+		{577E02CF-8C8F-4F28-9ED8-31FA3ACE2C5B}.RelWithDebInfo|x64.ActiveCfg = Release|x64
+		{577E02CF-8C8F-4F28-9ED8-31FA3ACE2C5B}.RelWithDebInfo|x64.Build.0 = Release|x64
+		{577E02CF-8C8F-4F28-9ED8-31FA3ACE2C5B}.RelWithDebInfo|x86.ActiveCfg = Release|x86
+		{577E02CF-8C8F-4F28-9ED8-31FA3ACE2C5B}.RelWithDebInfo|x86.Build.0 = Release|x86
+		{E0D90619-6D27-482B-86B1-496F4AD78D3B}.Debug|x64.ActiveCfg = Debug|x64
+		{E0D90619-6D27-482B-86B1-496F4AD78D3B}.Debug|x64.Build.0 = Debug|x64
+		{E0D90619-6D27-482B-86B1-496F4AD78D3B}.Debug|x86.ActiveCfg = Debug|x86
+		{E0D90619-6D27-482B-86B1-496F4AD78D3B}.Debug|x86.Build.0 = Debug|x86
+		{E0D90619-6D27-482B-86B1-496F4AD78D3B}.Release|x64.ActiveCfg = Release|x64
+		{E0D90619-6D27-482B-86B1-496F4AD78D3B}.Release|x64.Build.0 = Release|x64
+		{E0D90619-6D27-482B-86B1-496F4AD78D3B}.Release|x86.ActiveCfg = Release|x86
+		{E0D90619-6D27-482B-86B1-496F4AD78D3B}.Release|x86.Build.0 = Release|x86
+		{E0D90619-6D27-482B-86B1-496F4AD78D3B}.RelWithDebInfo|x64.ActiveCfg = Release|x64
+		{E0D90619-6D27-482B-86B1-496F4AD78D3B}.RelWithDebInfo|x64.Build.0 = Release|x64
+		{E0D90619-6D27-482B-86B1-496F4AD78D3B}.RelWithDebInfo|x86.ActiveCfg = Release|x86
+		{E0D90619-6D27-482B-86B1-496F4AD78D3B}.RelWithDebInfo|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D807676F-905D-485E-8D34-148B3F1956C0}
+	EndGlobalSection
+EndGlobal

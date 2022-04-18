@@ -1,0 +1,88 @@
+﻿<Page
+    x:Class="PDFViewer_WinUI3Demo.Views.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewmodels="using:PDFViewer_WinUI3Demo.ViewModels"
+    Style="{StaticResource PageStyle}"
+    mc:Ignorable="d">
+
+    <Grid x:Name="ContentArea"
+          Margin="5 0 5 0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+
+        <CommandBar x:Name="cmdBar"
+                    Background="Transparent"
+                    Opening="CommandBar_Opening" 
+                    Closed="CommandBar_Closed">
+            <CommandBar.Content>
+                <StackPanel Orientation="Horizontal">
+                    <AppBarButton x:Name="btnSave"
+                                  Label="Save"
+                                  Icon="Save"
+                                  IsCompact="True"
+                                  Command="{x:Bind ViewModel.CMDSaveAsync}"/>
+                    
+                    <AppBarButton x:Name="btnSaveAs"
+                                  Label="Save As"
+                                  Icon="SaveLocal"
+                                  IsCompact="True"
+                                  Command="{x:Bind ViewModel.CMDSaveAsAsync}"/>
+                </StackPanel>
+            </CommandBar.Content>
+
+            <AppBarButton Icon="Rotate"
+                          Label="Rotate Clockwise"
+                          Command="{x:Bind ViewModel.CMDRotateClockwise}"/>
+            
+            <AppBarButton Icon="View"
+                          Label="View Mode">
+                <AppBarButton.Flyout>
+                    <MenuFlyout>
+                        <MenuFlyoutItem Text="Single"
+                                        Command="{x:Bind ViewModel.CMDViewModeChange}"
+                                        CommandParameter="single"/>
+                        <MenuFlyoutItem Text="Facing"
+                                        Command="{x:Bind ViewModel.CMDViewModeChange}"
+                                        CommandParameter="facing"/>
+                        <MenuFlyoutItem Text="Cover"
+                                        Command="{x:Bind ViewModel.CMDViewModeChange}"
+                                        CommandParameter="cover"/>
+                        <MenuFlyoutSeparator/>
+                        <ToggleMenuFlyoutItem Text="Vertical Scrolling"
+                                              Command="{x:Bind ViewModel.CMDToggleVerticalScrolling}"
+                                              IsChecked="{x:Bind ViewModel.SelectedPdfTab.IsVerticalScrolling, Mode=OneWay}"/>
+                    </MenuFlyout>
+                </AppBarButton.Flyout>
+            </AppBarButton>
+            
+            <AppBarSeparator/>
+
+            <AppBarButton Icon="Print"
+                          Label="Print"
+                          Command="{x:Bind ViewModel.CMDPrint}"/>
+        </CommandBar>
+
+        <TabView x:Name="pdfTabView"      
+                 Grid.Row="1"
+                 VerticalAlignment="Stretch"
+                 IsAddTabButtonVisible="True"
+                 AddTabButtonCommand="{x:Bind ViewModel.CMDAddTabAsync}"
+                 TabItemsSource="{x:Bind ViewModel.PdfTabs}"
+                 SelectedItem="{x:Bind ViewModel.SelectedPdfTab, Mode=TwoWay}"
+                 TabItemsChanged="pdfTabView_TabItemsChanged"
+                 TabCloseRequested="pdfTabView_TabCloseRequested">
+
+            <TabView.TabItemTemplate>
+                <DataTemplate x:DataType="viewmodels:PdfTabInfo">
+                    <TabViewItem Header="{x:Bind Name}"
+                                 Content="{x:Bind PDFView}"/>
+                </DataTemplate>
+            </TabView.TabItemTemplate>
+        </TabView>
+    </Grid>
+</Page>
