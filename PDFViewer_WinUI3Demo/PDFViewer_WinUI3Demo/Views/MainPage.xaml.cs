@@ -26,13 +26,12 @@ namespace PDFViewer_WinUI3Demo.Views
             Loaded += MainPage_Loaded;
         }
 
-        private void MainPage_Loaded(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
+        private async void MainPage_Loaded(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
         {
             if (ViewModel == null)
                 return;
 
-            String input_file_path = Path.Combine(InputPath, "GettingStarted.pdf");
-            ViewModel.AddTab(input_file_path);
+            await ViewModel.OpenGettingStarted();
         }
 
         private async void pdfTabView_TabItemsChanged(TabView sender, Windows.Foundation.Collections.IVectorChangedEventArgs args)

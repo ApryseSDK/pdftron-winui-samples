@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using System.Collections.ObjectModel;
+using System.Drawing.Printing;
 
 using Windows.Storage;
 using Windows.UI;
@@ -25,7 +26,7 @@ namespace PDFViewer_WinUI3Demo.ViewModels
         ToolManager mToolManager;
         bool mIsVerticalScrolling = true;
 
-        public PdfTabInfo(PDFDoc doc, StorageFile file)
+        public PdfTabInfo(StorageFile file, PDFDoc doc)
         {
             mPDFViewCtrl = new PDFViewCtrl();
             mToolManager = new ToolManager(PDFView);
@@ -221,6 +222,9 @@ namespace PDFViewer_WinUI3Demo.ViewModels
         #endregion
 
         #region Public Methods
+        /// <summary>
+        /// Close document tab
+        /// </summary>
         public void CloseTab(PdfTabInfo tab)
         {
             if (!PdfTabs.Contains(tab))
@@ -230,20 +234,16 @@ namespace PDFViewer_WinUI3Demo.ViewModels
             PdfTabs.Remove(tab);
         }
 
-        public void AddTab(string pdfFile)
+        /// <summary>
+        /// Open getting started PDF sample file from installed app's folder
+        /// </summary>
+        public async Task OpenGettingStarted()
         {
-            if (string.IsNullOrEmpty(pdfFile))
+            var file = await GetFileFromInstalledLocation(@"Resources\GettingStarted.pdf");
+            if (file == null)
                 return;
-            
-            PDFDoc doc;
-            try 
-            {
-                doc = PDFDoc.CreateFromFilePath(pdfFile);
-                var pdfTabInfo = new PdfTabInfo(doc, null);
 
-                PdfTabs.Add(pdfTabInfo);
-            }
-            catch (Exception) { }
+            AddTabAsync(file);
         }
         #endregion
 
@@ -272,6 +272,10 @@ namespace PDFViewer_WinUI3Demo.ViewModels
         private void Print()
         {
             if (SelectedPdfTab == null || SelectedPdfTab.PDFView == null) 
+                return;
+
+            PrinterSettings settings = new PrinterSettings();
+            if (!settings.IsDefaultPrinter)
                 return;
 
             var doc = SelectedPdfTab.PDFView.GetDoc();
@@ -342,11 +346,16 @@ namespace PDFViewer_WinUI3Demo.ViewModels
             if (file == null)
                 return;
 
-            var pdfDoc = await UtilityWinRT.OpenFilePDFViewerAsync(file, FileAccessMode.Read);
+            AddTabAsync(file);
+        }
+
+        private void AddTabAsync(StorageFile file)
+        {
+            var pdfDoc = CreatePDFDocFromStorageFile(file);
             if (pdfDoc == null)
                 return;
-            var pdfTabInfo = new PdfTabInfo(pdfDoc, file);
 
+            var pdfTabInfo = new PdfTabInfo(file, pdfDoc);
             PdfTabs.Add(pdfTabInfo);
         }
 
@@ -364,6 +373,63 @@ namespace PDFViewer_WinUI3Demo.ViewModels
                 return;
 
             await SelectedPdfTab.SaveDocAsync();
+        }
+
+        #endregion
+
+        #region Utilities
+
+        /// <summary>
+        /// Create a new PDFDoc instance from a StorageFile object
+        /// </summary>
+        /// <param name="file">The StorageFile to be opened</param>
+        /// <returns>An instance of PDFDoc</returns>
+        private PDFDoc CreatePDFDocFromStorageFile(IStorageFile file)
+        {
+            if (file == null)
+                return null;
+
+            PDFDoc doc = null;
+
+            try
+            {
+                doc = PDFDoc.CreateFromStorageFile(file);
+                if (doc.InitSecurityHandler() == false)
+                {
+                    // password protected just ingnore for now
+                    doc.Dispose();
+                    return null;
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return null;
+            }
+
+            return doc;
+        }
+
+        /// <summary>
+        /// Get a file from the application installed location
+        /// </summary>
+        /// <returns>The StorageFile, null if not found</returns>
+        private async Task<StorageFile> GetFileFromInstalledLocation(string path)
+        {
+            StorageFile file = null;
+            var installedPath = Package.Current.InstalledLocation.Path;
+
+            try
+            {
+                var installedFolder = await StorageFolder.GetFolderFromPathAsync(installedPath);
+                file = await installedFolder.GetFileAsync(path);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+            return file;
         }
 
         #endregion
