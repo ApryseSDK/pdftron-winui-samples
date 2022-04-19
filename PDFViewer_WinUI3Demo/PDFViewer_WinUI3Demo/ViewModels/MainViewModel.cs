@@ -160,6 +160,14 @@ namespace PDFViewer_WinUI3Demo.ViewModels
             await UtilityWinRT.SaveDocAsAsync(doc);
         }
 
+        public bool CloseContextMenu()
+        {
+            if (ToolMagr != null)
+                return ToolMagr.ClosePopup();
+
+            return false;
+        }
+
         public void Dispose()
         {
             if (ToolMagr != null)
@@ -193,7 +201,9 @@ namespace PDFViewer_WinUI3Demo.ViewModels
             CMDViewModeChange = new RelayCommand<string>(ViewModeChange);
             CMDToggleVerticalScrolling = new RelayCommand(TogleVerticalScrolling);
 
-            mPdfTabs = new ObservableCollection<PdfTabInfo>();            
+            mPdfTabs = new ObservableCollection<PdfTabInfo>();
+
+            this.PropertyChanged += MainViewModel_PropertyChanged;
         }
 
         #region Public Properties
@@ -373,6 +383,19 @@ namespace PDFViewer_WinUI3Demo.ViewModels
                 return;
 
             await SelectedPdfTab.SaveDocAsync();
+        }
+
+        #endregion
+
+        #region Events
+
+        private void MainViewModel_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName == nameof(SelectedPdfTab))
+            {
+                foreach(var tab in PdfTabs)
+                    tab.CloseContextMenu();
+            }
         }
 
         #endregion
