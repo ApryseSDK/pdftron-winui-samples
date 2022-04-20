@@ -3,9 +3,12 @@
 This sample demonstrate how to create WinUI 3 desktop application for viewing, annotate, convert, etc.
 
 ### Features
-- Open multiples PDFs
+- Open multiples PDFs with a multi-tab sample application
+- Save changes
+- Save as a new document
+- Change view modo of the document
 - Print PDF file
-- Annotation with multiples tools
+- Annotation with multiple annotation tools like signature, Free Text, Ink, Marker, Square and more.
 
 Platforms: x86, x64
 
