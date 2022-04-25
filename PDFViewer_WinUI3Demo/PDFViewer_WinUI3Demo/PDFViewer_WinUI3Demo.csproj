@@ -34,8 +34,8 @@
     <PackageReference Include="CommunityToolkit.Mvvm" Version="7.0.3" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="5.0.1" />
     <PackageReference Include="Microsoft.Xaml.Behaviors.WinUI.Managed" Version="2.0.4" />
-    <PackageReference Include="PDFTron.WinUI" Version="9.2.1.79470-preview3" />
-    <PackageReference Include="PDFTron.WinUI.Tools" Version="9.2.1-preview3" />
+    <PackageReference Include="PDFTron.WinUI" Version="9.2.1.79477-preview4" />
+    <PackageReference Include="PDFTron.WinUI.Tools" Version="9.2.1-preview4" />
     <PackageReference Include="System.Drawing.Common" Version="6.0.0" />
   </ItemGroup>
   <ItemGroup>
