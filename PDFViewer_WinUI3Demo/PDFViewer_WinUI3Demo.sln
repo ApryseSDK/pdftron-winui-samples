@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31515.178
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32602.215
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{C7167F0D-BC9F-4E6E-AFE1-012C56B48DB5}") = "PDFViewer_WinUI3Demo (Package)", "PDFViewer_WinUI3Demo (Package)\PDFViewer_WinUI3Demo (Package).wapproj", "{3005B097-7C1C-476F-AAD7-B64BC7B17E13}"
 EndProject
