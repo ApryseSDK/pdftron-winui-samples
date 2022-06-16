@@ -1,4 +1,4 @@
-# PDFTron WinUI Samples
+# PDFTron WinUI Samples for .NET 5
 
 This repository contains sample projects using different features of the PDFTron WinUI SDK.
 
