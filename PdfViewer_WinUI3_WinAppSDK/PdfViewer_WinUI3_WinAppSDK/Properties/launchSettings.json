@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "PdfViewer_WinUI3 (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "PdfViewer_WinUI3 (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}

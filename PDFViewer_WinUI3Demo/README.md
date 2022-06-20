@@ -1,4 +1,4 @@
-# PDFViewer WinUI3 Sample
+# PDFViewer WinUI3 Sample with Project Reunion
 
 This sample demonstrate how to create WinUI 3 desktop application for viewing, annotate, convert, etc.
 
