@@ -1,6 +1,6 @@
 # PDFTron WinUI Samples
 
-This repository contains sample projects using different features of the PDFTron WinUI SDK.
+This branch contains sample projects using different features of the PDFTron WinUI SDK with targets `Project Reunion`
 
 ## Integration samples
 
