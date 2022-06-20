@@ -7,13 +7,11 @@ This sample demonstrate how to create WinUI 3 desktop application for viewing, a
 - Annotation with multiple annotation tools like signature, Free Text, Ink, Marker, Square and more.
 
 Platforms: x86, x64
-.NET 5
-
-![main-page](./art/main_page.png)
 
 ## Running the Sample
 
 To run the sample, open the solution in Visual Studio 2022 and restore all the Nuget packages
+.NET 5 +
 
 ## License
 
