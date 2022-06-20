@@ -1,6 +1,7 @@
 # PDFTron WinUI Samples for .NET 5
 
-This repository contains sample projects using different features of the PDFTron WinUI SDK.
+This branch contains asample project using different features of the PDFTron WinUI SDK.
+Note that the sample has dependency on the outdated `Project Reunion` (not Windows App SDK - which you should refer to the main branch)
 
 ## Integration samples
 
