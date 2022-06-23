@@ -2,7 +2,7 @@
 
 This sample demonstrate how to create WinUI 3 desktop application for viewing, annotate, etc.
 
-### Features
+## Features
 - Viewe PDF and scroll, zoom in/out
 - Annotation with multiple annotation tools like signature, Free Text, Ink, Marker, Square and more.
 
@@ -10,8 +10,18 @@ Platforms: x86, x64
 
 ## Running the Sample
 
-To run the sample, open the solution in Visual Studio 2022 and restore all the Nuget packages
-.NET 5 +
+Ensure to have all components below installed
+
+- Visual Studio 2022
+- Windows App SDK for C# Templates (under .NET desktop development workload)
+- .NET 5 +
+
+To run the sample:
+
+1. open the solution in Visual Studio
+2. restore all the Nuget packages
+3. Select the `Packaged` version of the project
+4. Run Debug or Release mode
 
 ## License
 
