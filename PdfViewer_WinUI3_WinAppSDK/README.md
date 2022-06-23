@@ -12,8 +12,8 @@ Platforms: x86, x64
 
 Ensure to have all components below installed
 
-- Visual Studio 2022
-- Windows App SDK for C# Templates (under .NET desktop development workload)
+- Visual Studio 2019 or 2022
+- (Windows App SDK for C# Templates)[https://docs.microsoft.com/en-us/windows/apps/windows-app-sdk/downloads]
 - .NET 5 +
 
 To run the sample:
