@@ -29,8 +29,8 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.0.3" />
     <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.22621.1" />
-    <PackageReference Include="PDFTron.WinUI" Version="9.2.3.79593" />
-    <PackageReference Include="PDFTron.WinUI.Tools" Version="9.2.3" />
+    <PackageReference Include="PDFTron.WinUI" Version="9.3.0.80148" />
+    <PackageReference Include="PDFTron.WinUI.Tools" Version="9.3.0" />
     <Manifest Include="$(ApplicationManifest)" />
   </ItemGroup>
 
